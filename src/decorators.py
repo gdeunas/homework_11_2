@@ -2,6 +2,7 @@ from functools import wraps
 
 
 def log(filename):
+    """Декоратор log, который выполняет команды перед и после вызова функции."""
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -12,6 +13,7 @@ def log(filename):
                     file.write(msg)
             else:
                 msg = f"my_function error: {ValueError}: {args}, {kwargs}"
+                print(msg)
                 raise ValueError(msg)
             return result
 
